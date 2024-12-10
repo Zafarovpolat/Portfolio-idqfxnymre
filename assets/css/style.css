@@ -560,12 +560,12 @@ footer {
         z-index: 10;
         transition: all 700ms;
         gap: 50px;
+        background-color: rgba(255, 255, 255, 0.000001);
+        backdrop-filter: blur(10px);
     }
 
     .header__list.visible {
         transform: translateX(0%);
-        background-color: rgba(255, 255, 255, 0.000001);
-        backdrop-filter: blur(10px);
     }
 
     .header__list-item {

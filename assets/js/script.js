@@ -61,3 +61,35 @@ headerMenu.addEventListener('click', (evt) => {
 headerList.addEventListener('click', (evt) => {
     headerList.classList.toggle('visible')
 })
+
+// https://discord.com/api/webhooks/1316114334983786558/JYMhsSNB2dM5PLuNH1qK-sVFjeTOnn3sHe3z9SQ29TscJT3ZWFuuLqOX7EHqgvDpQGEI
+
+document.querySelector(".contact__form").addEventListener("submit", async (e) => {
+    e.preventDefault()
+
+    const webhookURL = "https://discord.com/api/webhooks/1316114334983786558/JYMhsSNB2dM5PLuNH1qK-sVFjeTOnn3sHe3z9SQ29TscJT3ZWFuuLqOX7EHqgvDpQGEI";
+    const name = document.getElementById("inputName").value;
+    const email = document.getElementById("inputEmail").value;
+    const message = document.getElementById("inputMessage").value;
+
+    const payload = {
+        content: `**Name:** ${name}\n**Email:** ${email}\n**Message:** ${message}`,
+    };
+
+    try {
+        const response = await fetch(webhookURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+            location.reload()
+        } else {
+        }
+    } catch (error) {
+        console.error("Error:", error);
+    }
+});
